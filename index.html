@@ -34,16 +34,14 @@
 <body class="bg-black text-white min-h-screen flex flex-col justify-between selection:bg-white selection:text-black">
 
     <!-- Top Header -->
-    <header class="w-full px-6 py-5 flex items-center justify-between border-b border-neutral-900 z-50 bg-black/90 backdrop-blur-md sticky top-0">
-        <!-- Exact Logo Mark -->
-        <div class="flex items-center">
-        <button onclick="switchTab('home')" class="focus:outline-none transition-opacity duration-200 opacity-90 hover:opacity-100 flex items-center group">
-    <img src="inx_logo.svg" alt="INXORB™" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
-</button>
-        </div>
+    <header class="w-full px-6 py-4 md:py-5 flex flex-col md:flex-row items-center justify-between gap-4 border-b border-neutral-900 z-50 bg-black/90 backdrop-blur-md sticky top-0">
+        <!-- Logo (Glitches Fixed) -->
+        <button onclick="switchTab('home')" class="focus:outline-none flex items-center">
+            <img src="inx_logo.svg" alt="INXORB™" class="h-10 md:h-12 w-auto transition-opacity duration-200 hover:opacity-80">
+        </button>
 
         <!-- Navigation Pillars -->
-        <nav class="flex items-center space-x-6 md:space-x-8 text-sm font-medium tracking-wide">
+        <nav class="flex items-center space-x-5 md:space-x-8 text-sm font-medium tracking-wide overflow-x-auto max-w-full pb-1 md:pb-0">
             <button onclick="switchTab('freq')" id="nav-freq" class="text-neutral-400 hover:text-white transition">Freq.</button>
             <button onclick="switchTab('dedcyte')" id="nav-dedcyte" class="text-neutral-400 hover:text-white transition">Dedcyte</button>
             <button onclick="switchTab('systems')" id="nav-systems" class="text-neutral-400 hover:text-white transition">Systems</button>
@@ -58,42 +56,55 @@
         <!-- HOME VIEW (Planetary Portal) -->
         <div id="view-home" class="absolute inset-0 flex flex-col items-center justify-center">
             <div id="canvas-container" class="absolute inset-0 z-0"></div>
-            <div class="relative z-10 text-center pointer-events-none px-4">
+            <div class="relative z-10 text-center pointer-events-auto px-4">
                 <p class="mono text-xs tracking-[0.3em] text-neutral-500 uppercase mb-3">OUT OF ORB // Planetary Research Terminal</p>
                 <h1 class="text-3xl md:text-5xl font-light tracking-tight text-white mb-4">INXORB</h1>
-                <p class="text-sm text-neutral-400 max-w-md mx-auto font-light leading-relaxed">
+                <p class="text-sm text-neutral-400 max-w-md mx-auto font-light leading-relaxed mb-8">
                     An independent universe unfolding through sound, motion, and hardware.
                 </p>
+                
+                <!-- Interactive Exploration Hook -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="switchTab('dedcyte')" class="px-6 py-3 border border-neutral-700 hover:border-white text-xs uppercase tracking-widest text-neutral-300 hover:text-white transition-all duration-300 bg-neutral-950/60 hover:bg-neutral-900 flex items-center gap-3">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Explore Dedcyte Universe &rarr;</span>
+                    </button>
+                    <button onclick="switchTab('systems')" class="px-6 py-3 border border-neutral-800 hover:border-neutral-600 text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-200 transition-all duration-300">
+                        Inspect Systems
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- FREQ. VIEW -->
         <div id="view-freq" class="view-section hidden absolute inset-0 overflow-y-auto px-6 py-12 max-w-5xl mx-auto">
             <div class="mb-12">
-                <span class="mono text-xs text-neutral-500 tracking-widest uppercase">Audio</span>
+                <span class="mono text-xs text-neutral-500 tracking-widest uppercase">Audio & Frequencies</span>
                 <h2 class="text-2xl font-light mt-1">Freq.</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="p-6 border border-neutral-900 bg-neutral-950/40 rounded-lg hover:border-neutral-700 transition">
+                <div class="p-6 border border-neutral-900 bg-neutral-950/40 rounded-lg hover:border-neutral-800 transition">
                     <div class="flex justify-between items-start mb-4">
                         <span class="mono text-xs text-neutral-500">TRK // 01</span>
-                        <span class="mono text-xs text-emerald-400">ACTIVE</span>
+                        <span class="mono text-xs text-amber-500/80">IN DEVELOPMENT</span>
                     </div>
                     <h3 class="text-lg font-medium mb-1">13.8 Billion</h3>
-                    <p class="text-sm text-neutral-400 mb-6 font-light">...</p>
-                    <button onclick="alert('Audio stream trigger initialized.')" class="px-4 py-2 bg-white text-black text-xs font-medium rounded hover:bg-neutral-200 transition">Play Stream</button>
+                    <p class="text-sm text-neutral-400 mb-6 font-light">Atmospheric scoring and sound design in production.</p>
+                    <button disabled class="px-4 py-2 border border-neutral-800 bg-neutral-900/50 text-neutral-500 text-xs font-medium rounded cursor-not-allowed">
+                        Release Pending
+                    </button>
                 </div>
-                <div class="p-6 border border-neutral-900 bg-neutral-950/40 rounded-lg hover:border-neutral-700 transition flex flex-col justify-between">
+                <div class="p-6 border border-neutral-900 bg-neutral-950/40 rounded-lg hover:border-neutral-800 transition flex flex-col justify-between">
                     <div>
                         <div class="flex justify-between items-start mb-4">
                             <span class="mono text-xs text-neutral-500">TRK // 02</span>
                             <span class="mono text-xs text-neutral-600">ARCHIVE</span>
                         </div>
-                        <h3 class="text-lg font-medium mb-1">More from Inxorb</h3>
-                        <p class="text-sm text-neutral-400 font-light">Additional audio logs and unreleased frequency drops in preparation.</p>
+                        <h3 class="text-lg font-medium mb-1">Upcoming Drops</h3>
+                        <p class="text-sm text-neutral-400 font-light">Additional audio logs, spatial soundscapes, and frequency drops currently in preparation.</p>
                     </div>
                     <div class="mt-6">
-                        <span class="text-xs mono text-neutral-500">Status: In development</span>
+                        <span class="text-xs mono text-neutral-500">Status: Master tracks in progress</span>
                     </div>
                 </div>
             </div>
@@ -109,7 +120,7 @@
                 <div class="aspect-video bg-neutral-900 rounded flex items-center justify-center mb-6 border border-neutral-800">
                     <p class="mono text-xs text-neutral-400">[ PRE_RENDER_SEQUENCE // DEDCYTE_TEASER.MP4 ]</p>
                 </div>
-                <h3 class="text-xl font-medium mb-2">Video Game</h3>
+                <h3 class="text-xl font-medium mb-2">Animated Film & Interactive Media</h3>
                 <p class="text-sm text-neutral-400 font-light max-w-2xl leading-relaxed">
                     Directed, modeled, and animated entirely within Godot Engine and Blender. Exploring isolated mechanical entities and atmospheric planetary decay.
                 </p>
@@ -146,11 +157,11 @@
             </div>
             <div class="p-8 border border-neutral-900 bg-neutral-950/40 rounded-lg">
                 <h3 class="text-lg font-medium mb-2">Active Experiments</h3>
-                <p class="text-sm text-neutral-400 font-light mb-6">Raw wireframes, unreleased 3D asset packages (such as the Pnax™ liquid medicine bottle models), and test telemetry.</p>
+                <p class="text-sm text-neutral-400 font-light mb-6 font-light">Raw wireframes, 3D asset developments, and test telemetry.</p>
                 <div class="p-4 bg-black border border-neutral-900 rounded mono text-xs text-neutral-400">
-                    > INXORB_LAB_LOG: Initializing test environment...<br>
-                    > Asset pipeline: Blender -> Godot -> Fab Market.<br>
-                    > All systems operational.
+                    &gt; INXORB_LAB_LOG: Initializing test environment...<br>
+                    &gt; Asset pipeline: Blender -&gt; Godot -&gt; Fab Market.<br>
+                    &gt; All systems operational.
                 </div>
             </div>
         </div>
@@ -168,7 +179,7 @@
                             <span class="mono text-xs text-neutral-500">OBJECT_01</span>
                         </div>
                         <h3 class="text-sm font-medium">Physical Artifact Drop</h3>
-                        <p class="text-xs text-neutral-400 mt-1">Limited run hardware object.</p>
+                        <p class="text-xs text-neutral-400 mt-1">Limited run hardware object & decals.</p>
                     </div>
                     <div class="mt-6 flex items-center justify-between">
                         <span class="mono text-xs text-neutral-300">-- CAD</span>
